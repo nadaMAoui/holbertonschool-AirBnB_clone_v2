@@ -4,8 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from models.city import City
-from os import getenv
-import models
+import os
 
 class State(BaseModel, Base):
     """ State class """

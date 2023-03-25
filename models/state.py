@@ -13,7 +13,7 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="all, delete-orphan")
 
-@property
+    @property
     def cities(self):
         """getter attribute cities that returns the list of City"""
         from models import storage

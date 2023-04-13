@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """
 This module is a simple Flask application that displays three routes:
-a homepage ("/"), an HBNB page ("/hbnb"), a dynamic page ("/c/<text>")
-that replaces underscores with spaces in the <text> parameter, and a dynamic function
+a homepage ("/"), an HBNB page ("/hbnb"),
+a dynamic page ("/c/<text>")
+that replaces underscores with spaces in the
+<text> parameter, and a dynamic function
 to display "Python" followed by a custom text string.
 
 """
@@ -29,6 +31,7 @@ def C(text):
     return  'C {:s}'.format(text.replace('_', ' '))
 
 
+@app.route("/c/<text>")
 @app.route("/python/<text>", strict_slashes=False)
 def python(text="is cool"):
     """Displays 'Python' followed by the <text>

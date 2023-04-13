@@ -1,4 +1,4 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
 """
 This module is a simple Flask application
 that displays two routes: a homepage ("/") and an HBNB page ("/hbnb").

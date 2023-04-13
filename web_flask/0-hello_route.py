@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
-fask web application instance
+fask web application instance initialisation
+app.route decorator
+view function
+server startup
 """
 from flask import Flask
 

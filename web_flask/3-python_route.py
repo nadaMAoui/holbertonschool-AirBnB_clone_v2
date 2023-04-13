@@ -36,7 +36,7 @@ def C(text):
 def python(text="is cool"):
     """Displays 'Python' followed by the <text>
     """
-    return 'Python {:s}' % text.replace('_', ' ')
+    return 'Python {:s}'.format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":

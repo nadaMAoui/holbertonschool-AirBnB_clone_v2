@@ -28,15 +28,15 @@ def HBNB():
 @app.route("/c/<text>", strict_slashes=False)
 def C(text):
     """Displays 'C' """
-    return  'C {:s}'.format(text.replace('_', ' '))
+    return 'C {:s}'.format(text.replace('_', ' '))
 
 
-@app.route("/c/<text>", strict_slashes=False)
+@app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def python(text="is cool"):
     """Displays 'Python' followed by the <text>
     """
-    return 'Python %s' %text.replace('_', ' ')
+    return 'Python {:s}' % text.replace('_', ' ')
 
 
 if __name__ == "__main__":

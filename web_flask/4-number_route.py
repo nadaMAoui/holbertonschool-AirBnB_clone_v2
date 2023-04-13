@@ -10,7 +10,8 @@ with spaces in the <text> parameter.
 followed by a custom text string. If no text string is provided,
 the default message "is cool" is used.
 - The "/number/<int:n>" page is a dynamic route that
-displays the message "<n> is a number" when visited, where <n> is a provided integer.
+displays the message "<n> is a number" when visited,
+where <n> is a provided integer.
 
 """
 
@@ -23,7 +24,7 @@ app = Flask(__name__)
 def Hello_HBNB():
     """Displays 'Hello HBNB!'"""
     return 'Hello HBNB!'
-  
+
 
 @app.route("/hbnb", strict_slashes=False)
 def HBNB():
@@ -37,7 +38,7 @@ def C(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)       
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)      
 @app.route("/python/<text>", strict_slashes=False)
 def python(text):
     """Displays 'Python'"""

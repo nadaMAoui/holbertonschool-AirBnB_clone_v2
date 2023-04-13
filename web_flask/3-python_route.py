@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
 This module is a simple Flask application that displays three routes:
-a homepage ("/"), an HBNB page ("/hbnb"),and a dynamic page ("/c/<text>")
-that replaces underscores with spaces in the <text> parameter and a dynamic function
-to display python with "text"
+a homepage ("/"), an HBNB page ("/hbnb"), a dynamic page ("/c/<text>")
+that replaces underscores with spaces in the <text> parameter, and a dynamic function
+to display "Python" followed by a custom text string.
+
 """
 from flask import Flask
 
@@ -16,23 +17,23 @@ def Hello_HBNB():
     return 'Hello HBNB!'
     
 
-@app.route("/hbnb", strict_slaches=False)
+@app.route("/hbnb", strict_slashes=False)
 def HBNB():
     """Display 'HBNB'"""
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slaches=False)
-def C():
-    """Display 'C'"""
+@app.route("/c/<text>", strict_slashes=False)
+def C(text):
+    """Displays 'C' """
     return  'C {:s}'.format(text.replace('_', ' '))
 
 
-@app.route("/python/<text>", strict_slaches=False)
-@app.route("/python/<text>", strict_slaches=False)
-def python(text = "is cool")
-    """Display 'Python' """
-    return 'python %s' %text.replace('_', ' ')
+@app.route("/python/<text>", strict_slashes=False)
+def python(text="is cool"):
+    """Displays 'Python' followed by the <text>
+    """
+    return 'Python %s' %text.replace('_', ' ')
 
 
 if __name__ == "__main__":

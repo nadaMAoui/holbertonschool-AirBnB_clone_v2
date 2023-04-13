@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """
-web flask app init
-@app.route(''/')
-@app.route('/hbnb')
-server run
+This module is a simple Flask application that
+displays two routes: a homepage ("/") and an HBNB page ("/hbnb")
 """
 from flask import Flask
 

@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-"""Starts a Flask web application.
-The application listens on 0.0.0.0, port 5000.
-Routes:
-    /: Displays 'Hello HBNB!'
+"""
+This module is a simple Flask application that displays three routes:
+a homepage ("/"), an HBNB page ("/hbnb"),
+a dynamic page ("/c/<text>")
+that replaces underscores with spaces in the
+<text> parameter, and a dynamic function
+to display "Python" followed by a custom text string.
 """
 from flask import Flask
 

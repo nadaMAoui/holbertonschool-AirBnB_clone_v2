@@ -15,9 +15,10 @@ def Hello_HBNB():
     '''view function'''
     return 'Hello HBNB!'
 
+
 @app.route("/hbnb", strict_slaches=False)
 def HBNB():
-    '''view function' '''
+    '''view function '''
     return 'HBNB'
     
 

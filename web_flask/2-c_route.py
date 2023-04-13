@@ -14,7 +14,7 @@ app = Flask(__name__)
 def Hello_HBNB():
     """view function"""
     return 'Hello HBNB!'
-    
+ 
 
 @app.route("/hbnb", strict_slashes=False)
 def HBNB():

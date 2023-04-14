@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Flask web application that retrieves data from a database and displays it"""
 
+
 from flask import Flask, render_template
 from models import storage
 from models.state import State

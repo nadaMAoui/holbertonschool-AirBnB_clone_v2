@@ -1,7 +1,3 @@
-#!/usr/bin/python3
-"""
-Define class Db_file_storage
-"""
 from models.base_model import BaseModel, Base
 from models.user import User
 from models.state import State
@@ -29,11 +25,11 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        """Contructor for the class DBStorage"""
+        """Constructor for the class DBStorage"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             user, pwd, host, db), pool_pre_ping=True)
-    if env == "test":
-        Base.MetaData.drop_all()
+        if env == "test":
+            Base.MetaData.drop_all()
 
     def all(self, cls=None):
         """Method to return a dictionary of objects"""
@@ -72,5 +68,5 @@ class DBStorage:
         DBStorage.__session = Session()
 
     def close(self):
-        """public methodto to call remove method"""
+        """Public method to call remove method"""
         DBStorage.__session.close()

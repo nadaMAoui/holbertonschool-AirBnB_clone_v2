@@ -1,32 +1,30 @@
 #!/usr/bin/python3
+"""flask web application
 """
-Flask web application that retrieves all states from a database and renders them in an HTML template
-"""
-
 from flask import Flask, render_template
+from os import environ
 from models import storage
 from models.state import State
 
-
 app = Flask(__name__)
+environ['FLASK_ENV'] = 'development'
 
 
 @app.teardown_appcontext
-def teardown_data(self):
-    """
-    Closes the database session after each request
+def states_list_teardown(self):
+    """ Ensures SQLAlchemy session opened to serve dynamic content for HTML
+    templates is closed after serving.
     """
     storage.close()
 
 
-@app.route("/states_list", strict_slashes=False)
+@app.route('/states_list', strict_slashes=False)
 def states_list():
+    """ Requests list of `State`s ordered by name, which populates HTML
+    template served to '/states_list'.
     """
-    Fetch all states from the database and
-    render them in an HTML template
-    """
-    states = storage.all(State)
-    return render_template("7-states_list.html", states=states)
+    return render_template('7-states_list.html', states=storage.all(State))
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='5000')

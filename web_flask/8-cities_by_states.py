@@ -19,8 +19,12 @@ def teardown_data(self):
 def cities_by_states():
     """
     Retrieve all the states and the cities
-    in each state from the database and
-    render them in a template
+    in each state from the database and render them
+    in a template for display on the web page.
+
+    Returns:
+        A Flask template rendered with data for all
+        the states and cities in the database.
     """
     states = storage.all(State)
     return render_template('8-cities_by_states.html', states=states)

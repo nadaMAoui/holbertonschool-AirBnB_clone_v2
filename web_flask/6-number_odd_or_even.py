@@ -13,6 +13,7 @@ the default message "is cool" is used.
 displays the message "<n> is a number" when visited,
 where <n> is a provided integer.
 - /number_template/<n>: display a HTML page only if n is an integer
+- /number_odd_or_even/<int:n>: display a HTML page only if n is an integer
 """
 
 from flask import Flask, render_template

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Flask web application'''
+'''Flask web application that displays a list of states from a database'''
 
 from flask import Flask, render_template
 from models.state import State
@@ -19,12 +19,9 @@ def state_list():
 
 @app.teardown_appcontext
 def teardown_appcontext(self):
-    '''Function to close the database connection
-    when the app context is torn down'''
+    '''Function to close the database connection when the app context is torn down'''
     return storage.close()
 
 
 if __name__ == '__main__':
-    # Run the Flask application on localhost at port 5000
     app.run(host='0.0.0.0', port=5000)
-

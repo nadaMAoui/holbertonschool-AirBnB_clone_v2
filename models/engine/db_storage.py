@@ -1,11 +1,7 @@
 #!/usr/bin/python3
-"""
-This module defines the DBStorage class which serves as a storage backend
-for the HBNB application using SQLAlchemy to interact with a MySQL database.
-"""
-
+"""create class DBStorage"""
 from os import getenv
-from sqlalchemy import create_engine
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.amenity import Amenity
 from models.base_model import BaseModel, Base
@@ -14,6 +10,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+
 
 database = getenv("HBNB_MYSQL_DB")
 user = getenv("HBNB_MYSQL_USER")
@@ -26,32 +23,25 @@ classes = {"State": State, "City": City, "User": User,
 
 
 class DBStorage:
-    """This class defines methods for interacting with the database using
-    SQLAlchemy ORM.
-    """
-
+    """class DBStorage"""
     __engine = None
     __session = None
 
     def __init__(self):
-        """Initialize a new DBStorage instance by creating a new connection to
-        the MySQL database.
-        """
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                       .format(user, password, host, database),
-                                       pool_pre_ping=True)
+        """initialize instances"""
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format
+                                      (user, password, host, database),
+                                      pool_pre_ping=True)
 
         if hbnb_env == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Returns a dictionary of objects depending on class name.
-        If cls is None, returns all objects of all classes in the database.
+        """return dictionary of instance attributes
         Args:
-            cls (str): Name of the class to retrieve objects for.
+            cls (obj): memory address of class
         Returns:
-            A dictionary of all objects of the specified class in the database,
-            or all objects in the database if cls is None.
+            dictionary of objects
         """
         dbobjects = {}
         if cls:
@@ -75,33 +65,38 @@ class DBStorage:
 
     def new(self, obj):
         """
-        Adds an object to the current database session.
+        add object to current database session
         Args:
-            obj (obj): The object to add.
+            obj (obj): an object
         """
         if obj:
             self.__session.add(obj)
 
     def save(self):
         """
-        Commits all changes to the current database session.
+        commit all changes of the current database session
         """
         self.__session.commit()
 
     def delete(self, obj=None):
         """
-        Deletes an object from the current database session.
+        delete from the current database session obj if not None
         Args:
-            obj (obj): The object to delete.
+            obj (obj): an object
         """
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
         """
-        Recreate all tables in the database and the current database session.
+        create all tables in the database and the current database session
         """
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False)
-        Session = scoped_session(session)
+        Session = scoped_session(session_factory)
+        self.__session = Session()
+
+    def close(self):
+        """close session"""
+        self.__session.close()

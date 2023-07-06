@@ -1,11 +1,15 @@
 #!/usr/bin/python3
+
+from flask import Flask, render_template
+from models import storage
+
+
 """
 You must use storage for fetching data
 from the storage engine (FileStorage or DBStorage) =>
  from models import storage and storage.all(...)
 """
-from flask import Flask, render_template
-from models import storage
+
 
 app = Flask(__name__)
 
